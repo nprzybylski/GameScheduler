@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\490 materials\\src\\repos\\GameScheduler\\GameScheduler.csproj": {}
+    "C:\\GameScheduler\\GameScheduler.csproj": {}
   },
   "projects": {
-    "D:\\490 materials\\src\\repos\\GameScheduler\\GameScheduler.csproj": {
+    "C:\\GameScheduler\\GameScheduler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\490 materials\\src\\repos\\GameScheduler\\GameScheduler.csproj",
+        "projectUniqueName": "C:\\GameScheduler\\GameScheduler.csproj",
         "projectName": "GameScheduler",
-        "projectPath": "D:\\490 materials\\src\\repos\\GameScheduler\\GameScheduler.csproj",
-        "packagesPath": "C:\\Users\\Nick\\.nuget\\packages\\",
-        "outputPath": "D:\\490 materials\\src\\repos\\GameScheduler\\obj\\",
+        "projectPath": "C:\\GameScheduler\\GameScheduler.csproj",
+        "packagesPath": "C:\\Users\\jackp\\.nuget\\packages\\",
+        "outputPath": "C:\\GameScheduler\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\jackp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
