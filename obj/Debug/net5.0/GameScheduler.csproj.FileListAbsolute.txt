@@ -78,3 +78,36 @@ D:\490 materials\src\repos\GameScheduler\obj\Debug\net5.0\scopedcss\bundle\GameS
 D:\490 materials\src\repos\GameScheduler\obj\Debug\net5.0\GameScheduler.RazorTargetAssemblyInfo.cache
 D:\490 materials\src\repos\GameScheduler\obj\Debug\net5.0\GameScheduler.csproj.CopyComplete
 D:\490 materials\src\repos\GameScheduler\obj\Debug\net5.0\GameScheduler.genruntimeconfig.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\appsettings.Development.json
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\appsettings.json
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\GameScheduler.exe
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Google.Protobuf.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\K4os.Compression.LZ4.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\K4os.Compression.LZ4.Streams.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\K4os.Hash.xxHash.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\MySql.Data.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Ubiety.Dns.Core.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Zstandard.Net.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.csproj.AssemblyReference.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.AssemblyInfoInputs.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.AssemblyInfo.cs
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.csproj.CoreCompileInputs.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\staticwebassets\GameScheduler.StaticWebAssets.Manifest.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\staticwebassets\GameScheduler.StaticWebAssets.xml
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\scopedcss\bundle\GameScheduler.styles.css
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.RazorTargetAssemblyInfo.cache
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.csproj.CopyComplete
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\ref\GameScheduler.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.pdb
