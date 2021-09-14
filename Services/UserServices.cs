@@ -19,7 +19,7 @@ namespace GameScheduler.Services {
          public User AddUser(User newUser) {
             return _repo.AddUser(newUser);
         }
-         public void DeleteUser(string title) {
+         public void DeleteUser(string name) {
              _repo.DeleteUser(name);
          }
     }
