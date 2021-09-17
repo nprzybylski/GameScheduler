@@ -111,3 +111,10 @@ C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameSc
 C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.dll
 C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\ref\GameScheduler.dll
 C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.pdb
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\GameScheduler.deps.json
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\GameScheduler.runtimeconfig.json
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\GameScheduler.runtimeconfig.dev.json
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\GameScheduler.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\ref\GameScheduler.dll
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\bin\Debug\net5.0\GameScheduler.pdb
+C:\Projects\VS Code Projects\GameScheduler\GameScheduler\obj\Debug\net5.0\GameScheduler.genruntimeconfig.cache
