@@ -14,16 +14,16 @@ namespace GameScheduler.Repository {
 
         public IEnumerable<GameEvent> GetAllGameEvents();
 
-        public GameEvent GetGameEventByID(int id);
+        public GameEvent GetGameEventById(int id);
 
-        public GameGameEvent InsertGame(GameEvent newGameEvent);
+        public GameEvent InsertGameEvent(GameEvent newGameEvent);
 
         public void UpdateGameEvent(int id, GameEvent newGameEvent);
 
         public void DeleteGameEvent(int id);
 
         // GetGameEventsByGame will allow a user to search for all public events for a given game.
-        public Game GetAllGameEventsByGame(Game inGame);
+        public Game GetAllGameEventsWithGameId(string Id);
 
         // Possible Methods of the future
         /*
@@ -66,7 +66,7 @@ namespace GameScheduler.Repository {
             var results = command.ExecuteReader();
 
 
-            List<GameEvent> newList = new List<GameEvent>
+            List<GameEvent> newList = new List<GameEvent>();
 
             while(results.Read()){
 
@@ -89,7 +89,8 @@ namespace GameScheduler.Repository {
 
 
 
-        public GameEvent GetGameEventByID(int id){
+
+        public GameEvent GetGameEventById(int id){
 
             var statement = "SELECT * GameEvents WHERE ID=@newId";
             
@@ -117,14 +118,104 @@ namespace GameScheduler.Repository {
         }
 
         
-        //public GameGameEvent InsertGame(GameEvent newGameEvent);
 
-        //public void UpdateGameEvent(int id, GameEvent newGameEvent);
+        public GameEvent InsertGameEvent(GameEvent newGameEvent){
 
-        //public void DeleteGameEvent(int id);
+            var statement = "INSERT INTO GameEvents (Id, Title, Users, GameId, Capacity, Time, Description) VALUES (@newId, @newTitle, @newUsers, @newGameId, @newCapacity, @newTime, @newDescription)"
 
-        // GetGameEventsByGame will allow a user to search for all public events for a given game.
-        //public Game GetAllGameEventsByGame(Game inGame);
+            var command = new MySqlCommand(statement, _connection);
+            command.Parameters.AddWithValue("@newId", newGameEvent.Id);
+            command.Parameters.AddWithValue("@newTitle", newGameEvent.Title);
+            command.Parameters.AddWithValue("@newUsers", newGameEvent.Users);
+            command.Parameters.AddwithValue("@newGameId", newGameEvent.GameId);
+            command.Parameters.AddwithValue("@newCapacity", newGameEvent.Capacity);
+            command.Parameters.AddwithValue("@newTime", newGameEvent.Time);
+            command.Parameters.AddwithValue("@newDescription", newGameEvent.Description);
+            
+            int result = command.ExecuteNonQuery();
+
+            if(result == 1){
+                return nweGameEvent;
+            }else{
+                return null;
+            }
+        }
+
+
+
+
+        public void UpdateGameEvent(int id, GameEvent newGameEvent){
+
+            var statement = "UPDATE GameEvent SET Title=@newTitle, Users=@newUsers, GameId=@newGameId, Capacity=@newCapacity, Time=@newTime, Description=@newDescription WHERE Id=@newId";
+
+            var command = new MySqlCommand(statement, _connection);
+            command.Parameters.AddWithValue("@newId", id);
+            command.Parameters.AddWithValue("@newTitle", newGameEvent.Title);
+            command.Parameters.AddWithValue("@newUsers", newGameEvent.Users);
+            command.Parameters.AddwithValue("@newGameId", newGameEvent.GameId);
+            command.Parameters.AddwithValue("@newCapacity", newGameEvent.Capacity);
+            command.Parameters.AddwithValue("@newTime", newGameEvent.Time);
+            command.Parameters.AddwithValue("@newDescription", newGameEvent.Description);
+
+            int result == command.ExecuteNonQuery();
+
+            if(result == 1){
+                return newGameEvent;
+            }else{
+                return null;
+            }
+
+        }
+
+
+
+        
+        public void DeleteGameEvent(int id){
+
+            var statement = "DELETE FROM GameEvents WHERE Id = @newId"
+
+            var command = new MySqlCommand(statement,_connection);
+            command.Parameters.AddWithValue("@newId", id);
+
+            result = command.ExecuteNonQuery();
+
+        }
+
+
+
+
+        // GetGameEventsByGameTitle will allow a user to search for all public events for a given game.
+        public IEnumerable<GameEvent> GetAllGameEventsWithGameId(String id){
+
+            var statement = "SELECT * FROM GameEvents WHERE GameId = @newGameId";
+
+            var command = new MySqlCommand(statement,_connection);
+            command.Parameters.AddwithValue("@newGameId", id);
+
+            results = command.ExecuteReader();
+
+            List<GameEvent> newList = new List<GameEvent>();
+
+            while(results.Read()){
+
+                GameEvent e = new GameEvent{
+
+                    e.Id = (int)results[0],
+                    e.Title = (string)results[1],
+                    e.Users = (string)results[2], 
+                    e.GameId = (string)results[3],
+                    e.Capacity = (int)results[4], 
+                    e.Time = (DateTime)results[5], 
+                    e.Description = (String)results[6]
+                
+                }
+
+            }
+            results.Close();
+            return newList;
+
+
+        }
 
 
 
