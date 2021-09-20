@@ -6,28 +6,47 @@ using MySql.Data.MySqlClient;
 
 namespace GameScheduler.Repository {
     public interface IUserRepository {
-        public User AddUser(User u);
+        List<User> Users {get; set;}
+        public IEnumerable<User> GetAllUsers();
+        public User InsertUser(User u);
         public void DeleteUser(string name);
     }
     public class UserRepository : IUserRepository {
+        public List<User> Users {get; set;}
         private MySqlConnection _connection;
         public UserRepository() {
-            string connectionString="server=localhost;userid=csci490user;password=csci490pass;database=GameScheduler";
+            string connectionString="server=game-scheduler.cm5lnq4oiwiw.us-east-2.rds.amazonaws.com;userid=admin;password=C$C149o#ndkuko1;database=GameScheduler";
             _connection = new MySqlConnection(connectionString);
             _connection.Open();
         }
         ~UserRepository() {
             _connection.Close();
         }
-        public User AddUser(User u) {
-            var statement = "INSERT into User (Name,Id,Password,FavoriteGames,Bio) values (@newName,@newId,@newPassword,@newFavoriteGames,@newBio)";
+        public IEnumerable<User> GetAllUsers() {
+            var statement = "Select * from user";
+            var command = new MySqlCommand(statement,_connection);
+            var results = command.ExecuteReader();
+
+            List<User> newList = new List<User>(25);
+
+            while(results.Read()) {
+                User g = new User {
+                    name = (string)results[0],
+                    password = (string)results[1],
+                    bio = (string)results[2]
+                };
+                newList.Add(g);
+            }
+            results.Close();
+            return newList;
+        }
+        public User InsertUser(User u) {
+            var statement = "INSERT into user (name,password,bio) values (@newName,@newPassword,@newBio)";
 
             var command = new MySqlCommand(statement,_connection);
-            command.Parameters.AddWithValue("@newName", u.Name);
-            command.Parameters.AddWithValue("@newId", u.Id);
-            command.Parameters.AddWithValue("@newPassword", u.Password);
-            command.Parameters.AddWithValue("@newFavoriteGames", u.FavoriteGames);
-            command.Parameters.AddWithValue("@newBio", u.Bio);
+            command.Parameters.AddWithValue("@newName", u.name);
+            command.Parameters.AddWithValue("@newPassword", u.password);
+            command.Parameters.AddWithValue("@newBio", u.bio);
 
             int result = command.ExecuteNonQuery();
             if(result == 1)
@@ -35,11 +54,11 @@ namespace GameScheduler.Repository {
             else
                 return null;
         }
-        public void DeleteUser(string Name) {
+        public void DeleteUser(string name) {
                 
-            var statement = "DELETE FROM Users Where Name=@N";
+            var statement = "DELETE FROM Users Where name=@N";
             var command = new MySqlCommand(statement,_connection);
-            command.Parameters.AddWithValue("@N", Name);
+            command.Parameters.AddWithValue("@N", name);
 
             int result = command.ExecuteNonQuery();
 

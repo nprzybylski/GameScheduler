@@ -7,20 +7,18 @@
     </head>
     <body>
         <h1>New User Registration</h1>
-
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
-
-        <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" rows="4" cols="50">Tell us about yourself!</textarea>
-
-        <input type="submit" value="Submit">
-        <script src="js/login.js" asp-append-version="true"></script>
+        <form action="javascript:void(0);" method="POST" onsubmit="addUser()">
+            <label for="add-username">Username:</label>
+            <input type="text" id="add-username" name="add-username"><br><br>
+    
+            <label for="add-password">Password:</label>
+            <input type="password" id="add-password" name="add-password"><br><br>
+    
+            <label for="bio">Bio:</label>
+            <textarea id="add-bio" name="add-bio" rows="4" cols="50">Tell us about yourself!</textarea>
+            <input type="submit" value="Submit">
+        <script src="js/registration.js" asp-append-version="true"></script>
         <script type="text/javascript">
-            getItems();
         </script>
     </body>
 </html>
