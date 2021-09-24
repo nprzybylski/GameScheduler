@@ -9,6 +9,7 @@ namespace GameScheduler.Services {
         public List<User> getUsers();
         public User insertUser(User g);
         public void deleteUser(string title);
+        public User loginUser(string name, string password);
 
     }
     public class UserServices : IUserServices {
@@ -25,6 +26,10 @@ namespace GameScheduler.Services {
         }
          public void deleteUser(string title) {
              _repo.DeleteUser(title);
+         }
+
+         public User loginUser(string name, string password){
+            return _repo.loginUser(name, password);
          }
     }
 }

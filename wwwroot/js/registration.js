@@ -27,4 +27,3 @@ function addUser() {
 
       .catch(error => console.error('Unable to add user.', error));
   }
-  

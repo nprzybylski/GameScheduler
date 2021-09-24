@@ -27,6 +27,18 @@ namespace GameScheduler.Controllers {
             }
         }
 
+        [HttpGet("{title}", Name="loginUser")]
+        public IActionResult loginUser(string name, string password) {
+            try {
+                User u = _userServices.loginUser(name, password);
+                if(u != null) return Ok(u);
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
         [HttpPost]
         public IActionResult InsertUser(User u) {
             try {
