@@ -9,9 +9,9 @@ namespace GameScheduler.Controllers {
     [ApiController]
 
     [Route("[controller]")]
-    public class GameSchedulerController : ControllerBase {
+    public class UserController : ControllerBase {
         private IUserServices _userServices;
-        public GameSchedulerController(IUserServices userServices)
+        public UserController(IUserServices userServices)
         {
             _userServices = userServices;
         }
@@ -19,18 +19,31 @@ namespace GameScheduler.Controllers {
         public IActionResult AddUser(User u) {
             try {
                 User returnedUser = _userServices.AddUser(u);
-                if(g !=null) return CreatedAtRoute("GetAllUsers", new {name=returnedUser.Name}, returnedUser);
+                if(u !=null) return CreatedAtRoute("GetAllUsers", new {name=returnedUser.Name}, returnedUser);
                 else return BadRequest();
             }
             catch (Exception ex) {
                 return StatusCode(500, "Internal server error");
             }
         }
-        [HttpDelete("{title}")]
+        [HttpDelete("{Name}")]
         public IActionResult DeleteUser(string Name) {
             try {
                 _userServices.DeleteUser(Name);
-                if(title!=null) return NoContent();
+                if(Name!=null) return NoContent();
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet(Name="GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            try {
+                IEnumerable<User> list = _userServices.GetAllUsers();
+                if(list!=null) return Ok(list);
                 else return BadRequest();
             }
             catch (Exception ex) {

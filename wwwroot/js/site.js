@@ -1,4 +1,4 @@
-const uri = 'GameScheduler';
+const uri = 'Game';
 let games = [];
 
 function getItems() {
