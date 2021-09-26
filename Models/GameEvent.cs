@@ -15,9 +15,13 @@ namespace GameScheduler.Models {
         and the resulting string could be used as a User ID to get information on each user. 
         
         */
+
+        // Make List of User object, Ex) public List<User> Users. 
         public String Users {get;set;}
         
         // Game associated with the game event.
+
+        // Use Game Object. 
         public String GameId {get; set;}
 
         // Limited number of users allowed to join a game event. 

@@ -30,6 +30,8 @@ namespace GameScheduler
         {
             services.AddSingleton<IGameServices, GameServices>();
             services.AddSingleton<IGameRepository, GameRepository>();
+            services.AddSingleton<IGameEventRepository, GameEventRepository>();
+            services.AddSingleton<IGameEventServices, GameEventServices>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
