@@ -23,7 +23,7 @@ namespace GameScheduler.Repository {
         public void DeleteGameEvent(int id);
 
         // GetGameEventsByGame will allow a user to search for all public events for a given game.
-        public Game GetAllGameEventsWithGameId(string Id);
+        public IEnumerable<GameEvent> GetAllGameEventsWithGameId(string Id);
 
         // Possible Methods of the future
         /*
@@ -49,6 +49,7 @@ namespace GameScheduler.Repository {
             string connectionString="server=game-scheduler.cm5lnq4oiwiw.us-east-2.rds.amazonaws.com;userid=admin;password=C$C149o#ndkuko1;database=GameScheduler";
             _connection = new MySqlConnection(connectionString);
             _connection.Open();
+        
         }
         
         ~GameRepository() {
@@ -61,7 +62,7 @@ namespace GameScheduler.Repository {
 
         public IEnumerable<GameEvent> GetAllGameEvents(){
 
-            var statement = "SELECT * FROM GameEvents"
+            var statement = "SELECT * FROM GameEvents";
             var command = new MySqlCommand(statement, _connection);
             var results = command.ExecuteReader();
 
@@ -80,7 +81,7 @@ namespace GameScheduler.Repository {
                     e.Time = (DateTime)results[5], 
                     e.Description = (String)results[6]
                 
-                }
+                };
 
             }
             results.Close();
@@ -110,7 +111,7 @@ namespace GameScheduler.Repository {
                     e.Time = (DateTime)results[5], 
                     e.Description = (String)results[6]
                 
-                }
+                };
 
             }
             results.Close();
@@ -121,7 +122,7 @@ namespace GameScheduler.Repository {
 
         public GameEvent InsertGameEvent(GameEvent newGameEvent){
 
-            var statement = "INSERT INTO GameEvents (Id, Title, Users, GameId, Capacity, Time, Description) VALUES (@newId, @newTitle, @newUsers, @newGameId, @newCapacity, @newTime, @newDescription)"
+            var statement = "INSERT INTO GameEvents (Id, Title, Users, GameId, Capacity, Time, Description) VALUES (@newId, @newTitle, @newUsers, @newGameId, @newCapacity, @newTime, @newDescription)";
 
             var command = new MySqlCommand(statement, _connection);
             command.Parameters.AddWithValue("@newId", newGameEvent.Id);
@@ -157,7 +158,7 @@ namespace GameScheduler.Repository {
             command.Parameters.AddwithValue("@newTime", newGameEvent.Time);
             command.Parameters.AddwithValue("@newDescription", newGameEvent.Description);
 
-            int result == command.ExecuteNonQuery();
+            int result = command.ExecuteNonQuery();
 
             if(result == 1){
                 return newGameEvent;
@@ -172,7 +173,7 @@ namespace GameScheduler.Repository {
         
         public void DeleteGameEvent(int id){
 
-            var statement = "DELETE FROM GameEvents WHERE Id = @newId"
+            var statement = "DELETE FROM GameEvents WHERE Id = @newId";
 
             var command = new MySqlCommand(statement,_connection);
             command.Parameters.AddWithValue("@newId", id);
@@ -208,7 +209,7 @@ namespace GameScheduler.Repository {
                     e.Time = (DateTime)results[5], 
                     e.Description = (String)results[6]
                 
-                }
+                };
 
             }
             results.Close();

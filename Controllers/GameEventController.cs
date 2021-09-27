@@ -14,7 +14,7 @@ namespace GameScheduler.Controllers {
 
     public class GameEventController: ControllerBase{
 
-        private IGameEventServices = _gameEventServices;
+        private IGameEventServices _gameEventServices;
 
 
         public GameEventController(IGameEventServices gameEventServices){
@@ -94,7 +94,7 @@ namespace GameScheduler.Controllers {
         [HttpPut("{id}")]
 
 
-        public IActionResult UpdateGameEvent(int id, GameEvnet g){
+        public IActionResult UpdateGameEvent(int id, GameEvent g){
 
             _gameEventServices.UpdateGameEvent(id, g);
 
