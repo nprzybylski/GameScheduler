@@ -42,6 +42,8 @@ namespace GameScheduler.Repository {
 
         public List<GameEvent> GameEvent {get;set;}
         
+
+        
         
         
         private MySqlConnection _connection;
