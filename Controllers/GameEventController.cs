@@ -33,7 +33,7 @@ namespace GameScheduler.Controllers {
                 IEnumerable<GameEvent> list = _gameEventServices.GetAllGameEvents();
 
                 if(list!=null) return Ok(list);
-                else return BadRequest;
+                else return BadRequest();
 
             }
             catch(Exception ex){
@@ -57,7 +57,7 @@ namespace GameScheduler.Controllers {
 
 
                 if(g!=null) return Ok(g);
-                else return BadRequest;
+                else return BadRequest();
 
             }
             catch(Exception ex){
@@ -122,18 +122,9 @@ namespace GameScheduler.Controllers {
 
         public IActionResult GetAllGameEventsWithGameId(string gameId){
 
-            IEnumerable<GameEvent> list = _gameEventServices.GetAllGameEventsWithGameId(gameid);
+            IEnumerable<GameEvent> list = _gameEventServices.GetAllGameEventsWithGameId(gameId);
 
             List<GameEvent> eventList = new List<GameEvent>();
-
-            foreach(GameEvent e in list){
-
-                if((e.gameId).Equals(e)){
-
-                    eventList.Add(e);
-                }
-
-            }
 
             if(eventList.Count >= 1){return Ok(eventList);}
 

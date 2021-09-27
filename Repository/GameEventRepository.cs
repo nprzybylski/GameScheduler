@@ -47,14 +47,14 @@ namespace GameScheduler.Repository {
         
         
         private MySqlConnection _connection;
-        public GameRepository() {
+        public GameEventRepository() {
             string connectionString="server=game-scheduler.cm5lnq4oiwiw.us-east-2.rds.amazonaws.com;userid=admin;password=C$C149o#ndkuko1;database=GameScheduler";
             _connection = new MySqlConnection(connectionString);
             _connection.Open();
         
         }
         
-        ~GameRepository() {
+        ~GameEventRepository() {
         
             _connection.Close();
         
@@ -75,13 +75,13 @@ namespace GameScheduler.Repository {
 
                 GameEvent e = new GameEvent{
 
-                    e.Id = (int)results[0],
-                    e.Title = (string)results[1],
-                    e.Users = (string)results[2], 
-                    e.GameId = (string)results[3],
-                    e.Capacity = (int)results[4], 
-                    e.Time = (DateTime)results[5], 
-                    e.Description = (String)results[6]
+                    Id = (int)results[0],
+                    Title = (string)results[1],
+                    Users = (string)results[2], 
+                    GameId = (string)results[3],
+                    Capacity = (int)results[4], 
+                    Time = (DateTime)results[5], 
+                    Description = (String)results[6]
                 
                 };
 
@@ -99,25 +99,27 @@ namespace GameScheduler.Repository {
             
             var command = new MySqlCommand(statement, _connection);
             command.Parameters.AddWithValue("@newId", id);
-            command.executeReader();
+            command.ExecuteReader();
             var results = command.ExecuteReader();
 
             if(results.Read()){
                 GameEvent e = new GameEvent{
 
-                    e.Id = (int)results[0],
-                    e.Title = (string)results[1],
-                    e.Users = (string)results[2], 
-                    e.GameId = (string)results[3],
-                    e.Capacity = (int)results[4], 
-                    e.Time = (DateTime)results[5], 
-                    e.Description = (String)results[6]
+                    Id = (int)results[0],
+                    Title = (string)results[1],
+                    Users = (string)results[2], 
+                    GameId = (string)results[3],
+                    Capacity = (int)results[4], 
+                    Time = (DateTime)results[5], 
+                    Description = (String)results[6]
                 
                 };
-
+                results.Close();
+                return e;
             }
             results.Close();
-            return e;
+            return null;
+            
         }
 
         
@@ -130,15 +132,15 @@ namespace GameScheduler.Repository {
             command.Parameters.AddWithValue("@newId", newGameEvent.Id);
             command.Parameters.AddWithValue("@newTitle", newGameEvent.Title);
             command.Parameters.AddWithValue("@newUsers", newGameEvent.Users);
-            command.Parameters.AddwithValue("@newGameId", newGameEvent.GameId);
-            command.Parameters.AddwithValue("@newCapacity", newGameEvent.Capacity);
-            command.Parameters.AddwithValue("@newTime", newGameEvent.Time);
-            command.Parameters.AddwithValue("@newDescription", newGameEvent.Description);
+            command.Parameters.AddWithValue("@newGameId", newGameEvent.GameId);
+            command.Parameters.AddWithValue("@newCapacity", newGameEvent.Capacity);
+            command.Parameters.AddWithValue("@newTime", newGameEvent.Time);
+            command.Parameters.AddWithValue("@newDescription", newGameEvent.Description);
             
             int result = command.ExecuteNonQuery();
 
             if(result == 1){
-                return nweGameEvent;
+                return newGameEvent;
             }else{
                 return null;
             }
@@ -155,18 +157,12 @@ namespace GameScheduler.Repository {
             command.Parameters.AddWithValue("@newId", id);
             command.Parameters.AddWithValue("@newTitle", newGameEvent.Title);
             command.Parameters.AddWithValue("@newUsers", newGameEvent.Users);
-            command.Parameters.AddwithValue("@newGameId", newGameEvent.GameId);
-            command.Parameters.AddwithValue("@newCapacity", newGameEvent.Capacity);
-            command.Parameters.AddwithValue("@newTime", newGameEvent.Time);
-            command.Parameters.AddwithValue("@newDescription", newGameEvent.Description);
+            command.Parameters.AddWithValue("@newGameId", newGameEvent.GameId);
+            command.Parameters.AddWithValue("@newCapacity", newGameEvent.Capacity);
+            command.Parameters.AddWithValue("@newTime", newGameEvent.Time);
+            command.Parameters.AddWithValue("@newDescription", newGameEvent.Description);
 
             int result = command.ExecuteNonQuery();
-
-            if(result == 1){
-                return newGameEvent;
-            }else{
-                return null;
-            }
 
         }
 
@@ -180,7 +176,7 @@ namespace GameScheduler.Repository {
             var command = new MySqlCommand(statement,_connection);
             command.Parameters.AddWithValue("@newId", id);
 
-            result = command.ExecuteNonQuery();
+            int result = command.ExecuteNonQuery();
 
         }
 
@@ -193,9 +189,9 @@ namespace GameScheduler.Repository {
             var statement = "SELECT * FROM GameEvents WHERE GameId = @newGameId";
 
             var command = new MySqlCommand(statement,_connection);
-            command.Parameters.AddwithValue("@newGameId", id);
+            command.Parameters.AddWithValue("@newGameId", id);
 
-            results = command.ExecuteReader();
+            var results = command.ExecuteReader();
 
             List<GameEvent> newList = new List<GameEvent>();
 
@@ -203,19 +199,21 @@ namespace GameScheduler.Repository {
 
                 GameEvent e = new GameEvent{
 
-                    e.Id = (int)results[0],
-                    e.Title = (string)results[1],
-                    e.Users = (string)results[2], 
-                    e.GameId = (string)results[3],
-                    e.Capacity = (int)results[4], 
-                    e.Time = (DateTime)results[5], 
-                    e.Description = (String)results[6]
+                    Id = (int)results[0],
+                    Title = (string)results[1],
+                    Users = (string)results[2], 
+                    GameId = (string)results[3],
+                    Capacity = (int)results[4], 
+                    Time = (DateTime)results[5], 
+                    Description = (String)results[6]
                 
                 };
-
+                results.Close();
+                return newList;
             }
             results.Close();
-            return newList;
+            return null;
+            
 
 
         }
