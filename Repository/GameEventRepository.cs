@@ -84,6 +84,7 @@ namespace GameScheduler.Repository {
                     Description = (String)results[6]
                 
                 };
+                newList.Add(e);
 
             }
             results.Close();

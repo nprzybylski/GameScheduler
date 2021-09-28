@@ -10,7 +10,7 @@ namespace GameScheduler.Controllers {
 
     [ApiController]
 
-    [Route("[GameEvents]")]
+    [Route("[[GameEvents]]")]
 
     public class GameEventController: ControllerBase{
 
@@ -24,13 +24,14 @@ namespace GameScheduler.Controllers {
 
 
         
-        [HttpGet]
+        [HttpGet(Name="GetAllGameEvents")]
 
         public IActionResult GetAllGameEvents(){
 
             try{
 
-                IEnumerable<GameEvent> list = _gameEventServices.GetAllGameEvents();
+                List<GameEvent> list = _gameEventServices.GetAllGameEvents();
+                
 
                 if(list!=null) return Ok(list);
                 else return BadRequest();
