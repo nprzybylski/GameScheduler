@@ -1,4 +1,4 @@
-const uri = 'GameEvents';
+const uri = '[GameEvents]';
 let todos = [];
 
 function getItems() {
@@ -78,13 +78,13 @@ function closeInput() {
 }
 
 function _displayCount(itemCount) {
-  const name = (itemCount === 1) ? 'to-do' : 'to-dos';
+  const name = (itemCount === 1) ? 'Game Event' : 'Game Events';
 
   document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
 function _displayItems(data) {
-  const tBody = document.getElementById('todos');
+  const tBody = document.getElementById('eventTable');
   tBody.innerHTML = '';
 
   _displayCount(data.length);
@@ -108,18 +108,38 @@ function _displayItems(data) {
     let tr = tBody.insertRow();
     
     let td1 = tr.insertCell(0);
-    td1.appendChild(isCompleteCheckbox);
+    let textNode1 = document.createTextNode(item.id)
+    td1.appendChild(textNode1);
+
+    
 
     let td2 = tr.insertCell(1);
-    let textNode = document.createTextNode(item.name);
-    td2.appendChild(textNode);
+    let textNode2 = document.createTextNode(item.title);
+    td2.appendChild(textNode2);
+
 
     let td3 = tr.insertCell(2);
-    td3.appendChild(editButton);
+    let textNode3 = document.createTextNode(item.users);
+    td3.appendChild(textNode3);
+
 
     let td4 = tr.insertCell(3);
-    td4.appendChild(deleteButton);
+    let textNode4 = document.createTextNode(item.gameId);
+    td4.appendChild(textNode4);
+
+    let td5 = tr.insertCell(4);
+    let textNode5 = document.createTextNode(item.capacity);
+    td5.appendChild(textNode5);
+
+    let td6 = tr.insertCell(5);
+    let textNode6 = document.createTextNode(item.time);
+    td6.appendChild(textNode6);
+
+    let td7 = tr.insertCell(6);
+    let textNode7 = document.createTextNode(item.description);
+    td7.appendChild(textNode7);
+
   });
 
-  todos = data;
+  eventTable = data;
 }

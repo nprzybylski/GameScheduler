@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>To-do CRUD</title>
+    <title>Game Events</title>
     <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
 
     
-    <h1>To-do CRUD</h1>
+    <h1>Game Events</h1>
     <h3>Add</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="add-name" placeholder="New to-do">
@@ -30,12 +30,18 @@
 
     <table>
         <tr>
-            <th>Is Complete?</th>
-            <th>Name</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Users</th>
+            <th>GameId</th>
+            <th>Capacity</th>
+            <th>Time</th>
+            <th>Description</th>
             <th></th>
             <th></th>
+
         </tr>
-        <tbody id="todos"></tbody>
+        <tbody id="eventTable"></tbody>
     </table>
 
     <script src="js/gameevent.js" asp-append-version="true"></script>
