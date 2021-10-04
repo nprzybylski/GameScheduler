@@ -26,24 +26,26 @@ namespace GameScheduler.Controllers {
                 return StatusCode(500, "Internal server error");
             }
         }
-
-        [HttpGet("{title}", Name="loginUser")]
+/*
+        [HttpPost]
         public IActionResult loginUser(string name, string password) {
             try {
-                User u = _userServices.loginUser(name, password);
-                if(u != null) return Ok(u);
+                bool log = _userServices.loginUser(name, password);
+                if(log != false) return Ok(log);
                 else return BadRequest();
             }
             catch (Exception ex) {
                 return StatusCode(500, "Internal server error");
             }
         }
-
+*/
         [HttpPost]
         public IActionResult InsertUser(User u) {
             try {
                 User returnedUser = _userServices.insertUser(u);
-                if(u!=null) return CreatedAtRoute("GetAllUsers", new {name=returnedUser.name}, returnedUser);
+                if(u!=null){
+                    //return CreatedAtRoute("GetAllUsers", new {name=returnedUser.name}, returnedUser); 
+                    return Redirect("https://localhost:5001/login.html"); }
                 else return BadRequest();
             }
             catch (Exception ex) {
@@ -61,7 +63,5 @@ namespace GameScheduler.Controllers {
                 return StatusCode(500, "Internal server error");
             }
         }
-    }
-
-    
+    }    
 }

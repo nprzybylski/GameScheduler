@@ -10,7 +10,7 @@ namespace GameScheduler.Repository {
         public IEnumerable<User> GetAllUsers();
         public User InsertUser(User u);
         public void DeleteUser(string name);
-        public User loginUser(string name, string password);
+        public bool loginUser(string name, string password);
     }
     public class UserRepository : IUserRepository {
         public List<User> Users {get; set;}
@@ -65,24 +65,17 @@ namespace GameScheduler.Repository {
 
         }
 
-        public User loginUser(string name, string password) {
+        public bool loginUser(string name, string password) {
             var statement = "Select * from user where Name=@newName and Password=@newPassword";
 
             var command = new MySqlCommand(statement,_connection);
             command.Parameters.AddWithValue("@newName", name);
             command.Parameters.AddWithValue("@newPassword", password);
-            var results = command.ExecuteReader();
-
-            if(results.Read()) {
-                User u = new User {
-                    name = (string)results[0],
-                    password = (string)results[1],
-                };
-                results.Close();
-                return u;
-            }
-            results.Close();
-            return null;
+            int result = command.ExecuteNonQuery();
+            if(result == 1)
+                return true;
+            else
+                return false;
         }
     }
 }
