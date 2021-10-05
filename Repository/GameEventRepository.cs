@@ -14,7 +14,7 @@ namespace GameScheduler.Repository {
 
         public IEnumerable<GameEvent> GetAllGameEvents();
 
-        public GameEvent GetGameEventById(int id);
+        public GameEvent GetGameEventByTitle(int title);
 
         public GameEvent InsertGameEvent(GameEvent newGameEvent);
 
@@ -23,7 +23,7 @@ namespace GameScheduler.Repository {
         public void DeleteGameEvent(int id);
 
         // GetGameEventsByGame will allow a user to search for all public events for a given game.
-        public IEnumerable<GameEvent> GetAllGameEventsWithGameId(string Id);
+        public IEnumerable<GameEvent> GetAllGameEventsWithGameTitle(string Title);
 
         // Possible Methods of the future
         /*
@@ -78,7 +78,7 @@ namespace GameScheduler.Repository {
                     Id = (int)results[0],
                     Title = (string)results[1],
                     Users = (string)results[2], 
-                    GameId = (string)results[3],
+                    GameTitle = (string)results[3],
                     Capacity = (int)results[4], 
                     Time = (DateTime)results[5], 
                     Description = (String)results[6]
@@ -94,12 +94,12 @@ namespace GameScheduler.Repository {
 
 
 
-        public GameEvent GetGameEventById(int id){
+        public GameEvent GetGameEventByTitle(int title){
 
-            var statement = "SELECT * GameEvents WHERE ID=@newId";
+            var statement = "SELECT * GameEvents WHERE Title=@newTitle";
             
             var command = new MySqlCommand(statement, _connection);
-            command.Parameters.AddWithValue("@newId", id);
+            command.Parameters.AddWithValue("@newTitle", title);
             command.ExecuteReader();
             var results = command.ExecuteReader();
 
@@ -109,7 +109,7 @@ namespace GameScheduler.Repository {
                     Id = (int)results[0],
                     Title = (string)results[1],
                     Users = (string)results[2], 
-                    GameId = (string)results[3],
+                    GameTitle = (string)results[3],
                     Capacity = (int)results[4], 
                     Time = (DateTime)results[5], 
                     Description = (String)results[6]
@@ -127,13 +127,13 @@ namespace GameScheduler.Repository {
 
         public GameEvent InsertGameEvent(GameEvent newGameEvent){
 
-            var statement = "INSERT INTO GameEvents (Id, Title, Users, GameId, Capacity, Time, Description) VALUES (@newId, @newTitle, @newUsers, @newGameId, @newCapacity, @newTime, @newDescription)";
+            var statement = "INSERT INTO GameEvents (Id, Title, Users, GameTitle, Capacity, Time, Description) VALUES (@newId, @newTitle, @newUsers, @newGameTitle, @newCapacity, @newTime, @newDescription)";
 
             var command = new MySqlCommand(statement, _connection);
             command.Parameters.AddWithValue("@newId", newGameEvent.Id);
             command.Parameters.AddWithValue("@newTitle", newGameEvent.Title);
             command.Parameters.AddWithValue("@newUsers", newGameEvent.Users);
-            command.Parameters.AddWithValue("@newGameId", newGameEvent.GameId);
+            command.Parameters.AddWithValue("@newGameTitle", newGameEvent.GameTitle);
             command.Parameters.AddWithValue("@newCapacity", newGameEvent.Capacity);
             command.Parameters.AddWithValue("@newTime", newGameEvent.Time);
             command.Parameters.AddWithValue("@newDescription", newGameEvent.Description);
@@ -152,13 +152,13 @@ namespace GameScheduler.Repository {
 
         public void UpdateGameEvent(int id, GameEvent newGameEvent){
 
-            var statement = "UPDATE GameEvent SET Title=@newTitle, Users=@newUsers, GameId=@newGameId, Capacity=@newCapacity, Time=@newTime, Description=@newDescription WHERE Id=@newId";
+            var statement = "UPDATE GameEvent SET Title=@newTitle, Users=@newUsers, GameTitle=@newGameTitle, Capacity=@newCapacity, Time=@newTime, Description=@newDescription WHERE Id=@newId";
 
             var command = new MySqlCommand(statement, _connection);
             command.Parameters.AddWithValue("@newId", id);
             command.Parameters.AddWithValue("@newTitle", newGameEvent.Title);
             command.Parameters.AddWithValue("@newUsers", newGameEvent.Users);
-            command.Parameters.AddWithValue("@newGameId", newGameEvent.GameId);
+            command.Parameters.AddWithValue("@newGameTitle", newGameEvent.GameTitle);
             command.Parameters.AddWithValue("@newCapacity", newGameEvent.Capacity);
             command.Parameters.AddWithValue("@newTime", newGameEvent.Time);
             command.Parameters.AddWithValue("@newDescription", newGameEvent.Description);
@@ -185,12 +185,12 @@ namespace GameScheduler.Repository {
 
 
         // GetGameEventsByGameTitle will allow a user to search for all public events for a given game.
-        public IEnumerable<GameEvent> GetAllGameEventsWithGameId(String id){
+        public IEnumerable<GameEvent> GetAllGameEventsWithGameTitle(String Title){
 
-            var statement = "SELECT * FROM GameEvents WHERE GameId = @newGameId";
+            var statement = "SELECT * FROM GameEvents WHERE GameTitle = @newGameTitle";
 
             var command = new MySqlCommand(statement,_connection);
-            command.Parameters.AddWithValue("@newGameId", id);
+            command.Parameters.AddWithValue("@newGameTitle", Title);
 
             var results = command.ExecuteReader();
 
@@ -203,7 +203,7 @@ namespace GameScheduler.Repository {
                     Id = (int)results[0],
                     Title = (string)results[1],
                     Users = (string)results[2], 
-                    GameId = (string)results[3],
+                    GameTitle = (string)results[3],
                     Capacity = (int)results[4], 
                     Time = (DateTime)results[5], 
                     Description = (String)results[6]
