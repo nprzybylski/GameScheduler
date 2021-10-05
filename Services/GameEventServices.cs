@@ -20,7 +20,7 @@ namespace GameScheduler.Services{
 
         public void DeleteGameEvent(int id);
 
-        public List<GameEvent> GetAllGameEventsWithTitle(string Title);
+        public List<GameEvent> GetAllGameEventsWithGameTitle(string Title);
 
     }
 
