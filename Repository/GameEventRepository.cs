@@ -206,7 +206,7 @@ namespace GameScheduler.Repository {
                     GameTitle = (string)results[3],
                     Capacity = (int)results[4], 
                     Time = (DateTime)results[5], 
-                    Description = (String)results[6]
+                    Description = (String)results[6] 
                 
                 };
                 results.Close();
