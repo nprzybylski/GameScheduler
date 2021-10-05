@@ -20,7 +20,7 @@ namespace GameScheduler.Services{
 
         public void DeleteGameEvent(int id);
 
-        public List<GameEvent> GetAllGameEventsWithGameId(string id);
+        public List<GameEvent> GetAllGameEventsWithTitle(string Title);
 
     }
 
@@ -68,8 +68,8 @@ namespace GameScheduler.Services{
             _repo.DeleteGameEvent(id);
         }
 
-        public List<GameEvent> GetAllGameEventsWithGameId(string id){
-            List<GameEvent> allGameEvents = _repo.GetAllGameEventsWithGameId(id).ToList<GameEvent>();
+        public List<GameEvent> GetAllGameEventsWithGameTitle(string Title){
+            List<GameEvent> allGameEvents = _repo.GetAllGameEventsWithGameTitle(Title).ToList<GameEvent>();
             return allGameEvents;
         }
 

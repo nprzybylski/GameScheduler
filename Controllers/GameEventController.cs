@@ -121,9 +121,9 @@ namespace GameScheduler.Controllers {
         [HttpGet("{gameId}/gameid/")]
 
 
-        public IActionResult GetAllGameEventsWithGameId(string gameId){
+        public IActionResult GetAllGameEventsWithGameTitle(string gameTitle){
 
-            IEnumerable<GameEvent> list = _gameEventServices.GetAllGameEventsWithGameId(gameId);
+            IEnumerable<GameEvent> list = _gameEventServices.GetAllGameEventsWithGameTitle(gameTitle);
 
             List<GameEvent> eventList = new List<GameEvent>();
 

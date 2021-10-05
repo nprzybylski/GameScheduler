@@ -14,7 +14,7 @@ namespace GameScheduler.Repository {
 
         public IEnumerable<GameEvent> GetAllGameEvents();
 
-        public GameEvent GetGameEventByTitle(int title);
+        public GameEvent GetGameEventById(int id);
 
         public GameEvent InsertGameEvent(GameEvent newGameEvent);
 
@@ -94,12 +94,12 @@ namespace GameScheduler.Repository {
 
 
 
-        public GameEvent GetGameEventByTitle(int title){
+        public GameEvent GetGameEventById(int id){
 
-            var statement = "SELECT * GameEvents WHERE Title=@newTitle";
+            var statement = "SELECT * GameEvents WHERE Id=@newId";
             
             var command = new MySqlCommand(statement, _connection);
-            command.Parameters.AddWithValue("@newTitle", title);
+            command.Parameters.AddWithValue("@newId", id);
             command.ExecuteReader();
             var results = command.ExecuteReader();
 

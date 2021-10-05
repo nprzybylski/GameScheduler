@@ -22,7 +22,7 @@ namespace GameScheduler.Models {
         // Game associated with the game event.
 
         // Use Game Object. 
-        public String GameId {get; set;}
+        public String GameTitle {get; set;}
 
         // Limited number of users allowed to join a game event. 
         public int Capacity {get;set;}
