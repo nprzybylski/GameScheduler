@@ -1,3 +1,7 @@
+* {
+    float: center;
+}
+
 input[type='submit'], button, [aria-label] {
     cursor: pointer;
 }
