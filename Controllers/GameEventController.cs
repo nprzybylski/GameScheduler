@@ -118,7 +118,7 @@ namespace GameScheduler.Controllers {
 
 
 
-        [HttpGet("{gameId}/gameid/")]
+        [HttpGet("{gameTitle}/gameid/")]
 
 
         public IActionResult GetAllGameEventsWithGameTitle(string gameTitle){
@@ -130,6 +130,25 @@ namespace GameScheduler.Controllers {
             if(eventList.Count >= 1){return Ok(eventList);}
 
             return BadRequest();
+
+        }
+
+        // Get all game events with date
+        [HttpGet("date/{date}")]
+
+
+        public IActionResult GetAllGameEventsWithDate(string date){
+
+            //date = "2021-09-27";
+            
+            List<GameEvent> list = _gameEventServices.GetAllGameEventsWithDate(date);
+
+            List<GameEvent> eventList = new List<GameEvent>();
+
+            if(list.Count >= 1){return Ok(list);}
+
+            return BadRequest();
+
 
         }
 

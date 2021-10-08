@@ -22,6 +22,10 @@ namespace GameScheduler.Services{
 
         public List<GameEvent> GetAllGameEventsWithGameTitle(string Title);
 
+        //Get all Game Events with date
+        public List<GameEvent> GetAllGameEventsWithDate(string date);
+
+
     }
 
 
@@ -72,6 +76,13 @@ namespace GameScheduler.Services{
             List<GameEvent> allGameEvents = _repo.GetAllGameEventsWithGameTitle(Title).ToList<GameEvent>();
             return allGameEvents;
         }
+
+        //Get all Game Events with date
+        public List<GameEvent> GetAllGameEventsWithDate(string date){
+            List<GameEvent> allGameEvents = _repo.GetAllGameEventsWithDate(date);
+            return allGameEvents; 
+        }
+
 
     }
 

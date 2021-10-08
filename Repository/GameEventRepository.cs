@@ -25,6 +25,8 @@ namespace GameScheduler.Repository {
         // GetGameEventsByGame will allow a user to search for all public events for a given game.
         public IEnumerable<GameEvent> GetAllGameEventsWithGameTitle(string Title);
 
+        public List<GameEvent> GetAllGameEventsWithDate(string date);
+
         // Possible Methods of the future
         /*
             
@@ -216,6 +218,50 @@ namespace GameScheduler.Repository {
             return null;
             
 
+
+        }
+
+        public List<GameEvent> GetAllGameEventsWithDate(string date){
+
+            var statement = "SELECT * FROM GameEvents";
+            var command = new MySqlCommand(statement,_connection);
+
+            var results = command.ExecuteReader();
+
+            List<GameEvent> newList = new List<GameEvent>();
+
+            while(results.Read()){
+
+                
+                GameEvent e = new GameEvent{
+
+                    Id = (int)results[0],
+                    Title = (string)results[1],
+                    Users = (string)results[2], 
+                    GameTitle = (string)results[3],
+                    Capacity = (int)results[4], 
+                    Time = (DateTime)results[5], 
+                    Description = (String)results[6] 
+                
+                };
+
+                // String for GameEvent DateOnly 
+
+                string eventdate = e.Time.ToString("yyyy-MM-dd");
+
+                if(eventdate.Equals(date)){
+
+                    newList.Add(e);
+                }
+                
+                
+            }
+            results.Close();
+            return newList;
+            
+
+
+            
 
         }
 
