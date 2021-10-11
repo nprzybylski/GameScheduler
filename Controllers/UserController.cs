@@ -18,12 +18,14 @@ namespace GameScheduler.Controllers {
         [HttpPost]
         public IActionResult AddUser(User u) {
             try {
+                Console.WriteLine("Trying Controller...");
                 User returnedUser = _userServices.AddUser(u);
+                Console.WriteLine("Done...");
                 if(u !=null) return CreatedAtRoute("GetAllUsers", new {name=returnedUser.Name}, returnedUser);
                 else return BadRequest();
             }
             catch (Exception ex) {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error -- Add");
             }
         }
         [HttpDelete("{Name}")]
@@ -44,6 +46,30 @@ namespace GameScheduler.Controllers {
             try {
                 IEnumerable<User> list = _userServices.GetAllUsers();
                 if(list!=null) return Ok(list);
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error -- Get");
+            }
+        }
+
+        [HttpGet("{name}", Name="GetUserByName")]
+        public IActionResult GetUserByName(string name) {
+            try {
+                User u = _userServices.getUserByName(name);
+                if(u != null) return Ok(u);
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPut("{name}")]
+        public IActionResult UpdateGame(string name, User userIn) {
+            try {
+                _userServices.updateUser(name, userIn);
+                if(name!=null || userIn!=null) return NoContent();
                 else return BadRequest();
             }
             catch (Exception ex) {
