@@ -66,16 +66,26 @@ namespace GameScheduler.Repository {
         }
 
         public bool loginUser(string name, string password) {
-            var statement = "Select * from user where Name=@newName and Password=@newPassword";
+            var statement = "Select * from user";
+            //Name is null somehow
 
             var command = new MySqlCommand(statement,_connection);
-            command.Parameters.AddWithValue("@newName", name);
-            command.Parameters.AddWithValue("@newPassword", password);
-            int result = command.ExecuteNonQuery();
-            if(result == 1)
-                return true;
-            else
-                return false;
+            var result = command.ExecuteReader();
+            Console.WriteLine(name);
+            Console.WriteLine(password);
+            bool passMatch = true;
+            while(result.Read()) {  
+                if((string.Equals(name, (string)result[0])) && (string.Equals(password, (string)result[1]))){
+                    passMatch = true;
+                    break;
+                }else{
+                    passMatch = false;
+                    break;
+                }
+            }
+            result.Close();
+            Console.WriteLine(passMatch);
+            return passMatch;
         }
     }
 }

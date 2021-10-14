@@ -26,19 +26,19 @@ namespace GameScheduler.Controllers {
                 return StatusCode(500, "Internal server error");
             }
         }
-/*
-        [HttpPost]
+     
+        [HttpPost("{name}/{password}")]
         public IActionResult loginUser(string name, string password) {
             try {
                 bool log = _userServices.loginUser(name, password);
                 if(log != false) return Ok(log);
-                else return BadRequest();
+                else return NotFound();
             }
             catch (Exception ex) {
                 return StatusCode(500, "Internal server error");
             }
         }
-*/
+        
         [HttpPost]
         public IActionResult InsertUser(User u) {
             try {

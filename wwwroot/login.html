@@ -7,13 +7,13 @@
     </head>
     <body>
         <h1>Login</h1>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Submit">
+        <form action="javascript:void(0);" method="POST" onsubmit="loginUser()">
+            <label for="add-username">Username:</label>
+            <input type="text" id="username" name="username" required="required"><br><br>
+            <label for="add-password">Password:</label>
+            <input type="password" id="password" name="password" required="required"><br><br>
+            <input type="submit" value="Submit">
         <input type="button"  onClick="parent.location='registration.html'" value="Register New User" id="registernewuser">
-        
         <script src="js/login.js" asp-append-version="true"></script>
         <script type="text/javascript">
         </script>

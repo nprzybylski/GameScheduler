@@ -28,7 +28,7 @@ function addUser() {
         .then(response => response.json())
         .catch(error => console.error('Unable to add user.', error));
     }else{
-      alert("INCORRECT BTICH")
+      alert("Passwords do not match")
     }
   }
 function confirmPassword(pass, confirmPass){
