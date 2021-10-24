@@ -140,14 +140,26 @@ namespace GameScheduler.Controllers {
         public IActionResult GetAllGameEventsWithDate(string date){
 
             //date = "2021-09-27";
-            
+            GameEvent e = new GameEvent{
+
+                Id = 234,
+                Title = "Get all game events is being called",
+                Users = "Bad Request", 
+                GameTitle = "test title",
+                Capacity = 1, 
+                Time = DateTime.Now, 
+                Description = "test descr"
+                
+            };
+                
             List<GameEvent> list = _gameEventServices.GetAllGameEventsWithDate(date);
 
-            List<GameEvent> eventList = new List<GameEvent>();
+            List<GameEvent> testList = new List<GameEvent>();
 
             if(list.Count >= 1){return Ok(list);}
 
-            return BadRequest();
+            testList.Add(e);
+            return Ok(testList);
 
 
         }

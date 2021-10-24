@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    
+  <!-- 
     <h1>Game Events</h1>
     <h3>Add</h3>
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
@@ -43,16 +43,22 @@
         </tr>
         <tbody id="eventTable"></tbody>
     </table>
-
-    <script src="js/gameevent.js" asp-append-version="true"></script>
+  <script src="js/gameevent.js" asp-append-version="true"></script>
     <script type="text/javascript">
-        getItems();
+    //  getItems();
     </script>
+-->
 
+
+<p id="counter"></p> <!-- For some Odd Reason you need this counter for a table to work-->
+
+<p> Choose a Date: </p>
+
+    <input type="date" id="event-date" name="event-date" onchange="getEventDate(event)">
 
     <br>
     <br>
-
+<div>
     <h1> Get Game Events by date:</h1>
     <br>
     <table>
@@ -75,6 +81,7 @@
     <script type="text/javascript">
         getItemsByDate();
     </script>
+ </div>
 
 </body>
 </html>

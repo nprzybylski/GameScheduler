@@ -1,4 +1,5 @@
 const uri = '[GameEvents]';
+//Test variables for GetByDate
 let todos = [];
 
 function getItems() {
@@ -8,15 +9,23 @@ function getItems() {
     .catch(error => console.error('Unable to get items.', error));
 }
 
+// Fetch Date:
+
+function getEventDate(e){
+  var date = e.target.value;
+  //sessionStorage.setItem('date', e.target.value)
+  alert(e.target.value);
+  getItemsByDate(e);
+}
+
 // Fetch events by date
 
-function getItemsByDate() {
+function getItemsByDate(e) {
   //fetch(`${uri}/${date}`)
     //2021-09-27
-    fetch(`${uri}/date/2021-09-27`)
-
+  fetch(`${uri}/date/${e.target.value}`) 
     .then(response => response.json())
-    .then(data => _displayItemsByDate(data, date))
+    .then(data => _displayItemsByDate(data))
     .catch(error => console.error('Unable to get items.', error));
 }
 
