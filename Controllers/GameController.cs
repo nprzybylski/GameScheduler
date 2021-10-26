@@ -9,9 +9,9 @@ namespace GameScheduler.Controllers {
     [ApiController]
 
     [Route("[controller]")]
-    public class GameSchedulerController : ControllerBase {
+    public class GameController : ControllerBase {
         private IGameServices _gameServices;
-        public GameSchedulerController(IGameServices gameServices)
+        public GameController(IGameServices gameServices)
         {
             _gameServices = gameServices;
         }
