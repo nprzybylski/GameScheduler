@@ -113,7 +113,6 @@ C:\GameScheduler\obj\Debug\net5.0\staticwebassets\GameScheduler.StaticWebAssets.
 C:\GameScheduler\obj\Debug\net5.0\staticwebassets\GameScheduler.StaticWebAssets.xml
 C:\GameScheduler\obj\Debug\net5.0\scopedcss\bundle\GameScheduler.styles.css
 C:\GameScheduler\obj\Debug\net5.0\GameScheduler.RazorTargetAssemblyInfo.cache
-C:\GameScheduler\obj\Debug\net5.0\GameScheduler.csproj.CopyComplete
 C:\GameScheduler\obj\Debug\net5.0\GameScheduler.dll
 C:\GameScheduler\obj\Debug\net5.0\ref\GameScheduler.dll
 C:\GameScheduler\obj\Debug\net5.0\GameScheduler.pdb

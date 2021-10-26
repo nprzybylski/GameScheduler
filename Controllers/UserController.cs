@@ -31,8 +31,11 @@ namespace GameScheduler.Controllers {
         public IActionResult loginUser(string name, string password) {
             try {
                 bool log = _userServices.loginUser(name, password);
-                if(log != false) return Ok(log);
-                else return NotFound();
+                if(log == true){
+                return Ok(log);
+                }else{ 
+                return BadRequest();
+                }
             }
             catch (Exception ex) {
                 return StatusCode(500, "Internal server error");

@@ -19,8 +19,20 @@ function loginUser() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(login)
-  }
-  )
-    .then(response => response.json())
-    .catch(error => console.error('Unable to login user.', error));
+  })
+    .then(
+        function(response) {
+          if(response.status ==200){
+            alert("You have logged in");
+            _displayItems();
+          }else{
+            alert("Incorrect Username or Password");
+          }
+          return;
+        });
+}
+
+function _displayItems() {
+  const tBody = document.getElementById('games');
+
 }
