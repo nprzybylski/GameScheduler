@@ -24,7 +24,7 @@ function loginUser() {
         function(response) {
           if(response.status ==200){
             alert("You have logged in");
-            _displayItems();
+            window.location.replace("https://localhost:5001/");
           }else{
             alert("Incorrect Username or Password");
           }
