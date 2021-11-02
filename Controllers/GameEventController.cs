@@ -167,9 +167,20 @@ namespace GameScheduler.Controllers {
 
 
 
-        
+        [HttpGet("date/{date}/{gtitle}")]
 
 
+        public IActionResult GetGameEventsByGameTitleAndDate(string gtitle, string date){
+
+
+                
+            List<GameEvent> list = _gameEventServices.GetGameEventsByGameTitleAndDate(gtitle, date);
+
+            if(list.Count >= 1){return Ok(list);}
+            else{return BadRequest();}
+
+
+        }
 
 
 

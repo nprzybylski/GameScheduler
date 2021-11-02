@@ -5,7 +5,9 @@
     <title>Game Events</title>
     <link rel="stylesheet" href="css/site.css" />
 </head>
-<body>
+<body onload="javascript:getItems()">
+
+
 
   <!-- 
     <h1>Game Events</h1>
@@ -50,11 +52,22 @@
 -->
 
 
-<p id="counter"></p> <!-- For some Odd Reason you need this counter for a table to work-->
+<!--<p id="counter"></p> For some Odd Reason you need this counter for a table to work-->
 
 <p> Choose a Date: </p>
 
     <input type="date" id="event-date" name="event-date" onchange="getEventDate(event)">
+    <br>
+    <input type="button" value="Show All" name="all-events" onclick="getItems()">
+
+    <label for="gameselect" style="float:right;">Choose a Game</label>
+
+    <select name="gameselect" id="gameselect" style="float:right;" onchange="GetEventGameTitle(title)">
+     <option value="Battlefield V">Battlefield V</option>
+     <option value="Minecraft">Minecraft</option>
+     <option value="Space Engeineers">Space Engineers</option>
+     
+    </select>
 
     <br>
     <br>

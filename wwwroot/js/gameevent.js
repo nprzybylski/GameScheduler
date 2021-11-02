@@ -15,7 +15,21 @@ function getEventDate(e){
   var date = e.target.value;
   //sessionStorage.setItem('date', e.target.value)
   alert(e.target.value);
-  getItemsByDate(e);
+
+  if(e.target.value == ''){
+    getItems();
+  }else{
+    getItemsByDate(e);
+  }
+  
+}
+
+function getEventGameTitle(t){
+  var gametitle = t.target.value;
+  //sessionStorage.setItem('date', e.target.value)
+  alert(t.target.value);
+  getItemsByGameTitleAndDate()
+
 }
 
 // Fetch events by date
@@ -29,6 +43,13 @@ function getItemsByDate(e) {
     .catch(error => console.error('Unable to get items.', error));
 }
 
+function getItemsByGameTitleAndDate(t){
+  fetch(`${uri}/date/${t.target.value}`) 
+    .then(response => response.json())
+    .then(data => _displayItemsByDateAndTitle(data))
+    .catch(error => console.error('Unable to get items.', error));
+
+}
 //--------------------------------------------------------------------------------
 function addItem() {
   const addNameTextbox = document.getElementById('add-name');
@@ -106,10 +127,9 @@ function _displayCount(itemCount) {
 }
 
 function _displayItems(data) {
-  const tBody = document.getElementById('eventTable');
+  const tBody = document.getElementById('eventByDateTable');
   tBody.innerHTML = '';
 
-  _displayCount(data.length);
 
   const button = document.createElement('button');
 
@@ -174,7 +194,7 @@ function _displayItemsByDate(data){
   const tBody = document.getElementById('eventByDateTable');
   tBody.innerHTML = '';
 
-  _displayCount(data.length);
+  //_displayCount(data.length);
 
   const button = document.createElement('button');
 

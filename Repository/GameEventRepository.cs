@@ -27,6 +27,8 @@ namespace GameScheduler.Repository {
 
         public List<GameEvent> GetAllGameEventsWithDate(string date);
 
+        public List<GameEvent> GetGameEventsByGameTitleAndDate(string gtitle, string date);
+
         // Possible Methods of the future
         /*
             
@@ -262,6 +264,21 @@ namespace GameScheduler.Repository {
 
 
             
+
+        }
+
+        public List<GameEvent> GetGameEventsByGameTitleAndDate(string gtitle, string date){
+
+            List<GameEvent> newList = GetAllGameEventsWithDate(date);
+
+            foreach(GameEvent e in newList){
+
+                if((e.GameTitle).Equals(gtitle)){
+                    newList.Add(e);
+                }
+            }
+            return newList;
+
 
         }
 
