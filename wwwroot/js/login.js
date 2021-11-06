@@ -24,7 +24,8 @@ function loginUser() {
         function(response) {
           if(response.status ==200){
             alert("You have logged in");
-            window.location.replace("https://localhost:5001/");
+            sessionStorage.setItem("username",login.name);
+            window.location.replace("https://localhost:5001/userpage.html");
           }else{
             alert("Incorrect Username or Password");
           }

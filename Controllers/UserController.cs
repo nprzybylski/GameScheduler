@@ -13,19 +13,6 @@ namespace GameScheduler.Controllers {
         {
             _userServices = userServices;
         }
-
-        [HttpGet(Name="GetAllUsers")]
-        public IActionResult GetAllUsers()
-        {
-            try {
-                IEnumerable<User> list = _userServices.getUsers();
-                if(list!=null) return Ok(list);
-                else return BadRequest();
-            }
-            catch (Exception ex) {
-                return StatusCode(500, "Internal server error");
-            }
-        }
      
         [HttpPost("{name}/{password}")]
         public IActionResult loginUser(string name, string password) {
@@ -55,6 +42,7 @@ namespace GameScheduler.Controllers {
                 return StatusCode(500, "Internal server error");
             }
         }
+        
         [HttpDelete("{title}")]
         public IActionResult DeleteUser(string name) {
             try {

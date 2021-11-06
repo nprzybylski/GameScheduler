@@ -75,12 +75,13 @@ namespace GameScheduler.Repository {
             Console.WriteLine(password);
             bool passMatch = true;
             while(result.Read()) {  
+                Console.WriteLine((string)result[0]);
+                Console.WriteLine((string)result[1]);
                 if((string.Equals(name, (string)result[0])) && (string.Equals(password, (string)result[1]))){
                     passMatch = true;
                     break;
                 }else{
                     passMatch = false;
-                    break;
                 }
             }
             result.Close();
