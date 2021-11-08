@@ -56,16 +56,17 @@
 
 <p> Choose a Date: </p>
 
-    <input type="date" id="event-date" name="event-date" onchange="getEventDate(event)">
+    <input type="date" id="event-date" name="event-date"  onchange="getItemsByGameTitleAndDate()">
     <br>
-    <input type="button" value="Show All" name="all-events" onclick="getItems()">
+    <input type="button" value="Show All" name="all-events" onclick="clearInputFields();getItems();">
 
     <label for="gameselect" style="float:right;">Choose a Game</label>
 
-    <select name="gameselect" id="gameselect" style="float:right;" onchange="GetEventGameTitle(title)">
+    <select name="game-select" id="game-select" style="float:right;" onchange="getItemsByGameTitleAndDate()">
+     <option value="all">All</option>   
      <option value="Battlefield V">Battlefield V</option>
      <option value="Minecraft">Minecraft</option>
-     <option value="Space Engeineers">Space Engineers</option>
+     <option value="Space Engineers">Space Engineers</option>
      
     </select>
 

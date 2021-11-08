@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using GameScheduler.Models;
 using MySql.Data.MySqlClient;
+using System.Linq;
 
 namespace GameScheduler.Repository {
     
@@ -189,12 +190,12 @@ namespace GameScheduler.Repository {
 
 
         // GetGameEventsByGameTitle will allow a user to search for all public events for a given game.
-        public IEnumerable<GameEvent> GetAllGameEventsWithGameTitle(String Title){
+        public IEnumerable<GameEvent> GetAllGameEventsWithGameTitle(String gtitle){
 
-            var statement = "SELECT * FROM GameEvents WHERE GameTitle = @newGameTitle";
+            var statement = "SELECT * FROM GameEvents";
 
             var command = new MySqlCommand(statement,_connection);
-            command.Parameters.AddWithValue("@newGameTitle", Title);
+            //command.Parameters.AddWithValue("@newGameTitle", gtitle);
 
             var results = command.ExecuteReader();
 
@@ -213,11 +214,18 @@ namespace GameScheduler.Repository {
                     Description = (String)results[6] 
                 
                 };
-                results.Close();
-                return newList;
+
+                string eventgametitle = e.GameTitle;
+
+                if(eventgametitle.Equals(gtitle)){
+
+                    newList.Add(e);
+                }
+
+
             }
             results.Close();
-            return null;
+            return newList;
             
 
 
@@ -269,16 +277,60 @@ namespace GameScheduler.Repository {
 
         public List<GameEvent> GetGameEventsByGameTitleAndDate(string gtitle, string date){
 
-            List<GameEvent> newList = GetAllGameEventsWithDate(date);
+            if(gtitle.Equals("all") && date.Equals("all")){
 
-            foreach(GameEvent e in newList){
+                return GetAllGameEvents().ToList(); 
 
-                if((e.GameTitle).Equals(gtitle)){
+            }else if(gtitle.Equals("all")){
+
+                return GetAllGameEventsWithDate(date);
+
+            }else if(date.Equals("all")){
+
+                return GetAllGameEventsWithGameTitle(gtitle).ToList();
+            }else{
+
+
+                var statement = "SELECT * FROM GameEvents";
+                var command = new MySqlCommand(statement,_connection);
+
+                var results = command.ExecuteReader();
+
+                List<GameEvent> newList = new List<GameEvent>();
+
+                while(results.Read()){
+
+                
+                    GameEvent e = new GameEvent{
+
+                        Id = (int)results[0],
+                        Title = (string)results[1],
+                        Users = (string)results[2], 
+                        GameTitle = (string)results[3],
+                        Capacity = (int)results[4], 
+                        Time = (DateTime)results[5], 
+                        Description = (String)results[6] 
+                
+                    };
+
+                // String for GameEvent DateOnly 
+
+                string eventdate = e.Time.ToString("yyyy-MM-dd");
+                string eventgametitle = e.GameTitle;
+
+                if(eventdate.Equals(date) && eventgametitle.Equals(gtitle)){
+
                     newList.Add(e);
                 }
+                
+                
             }
+            results.Close();
             return newList;
+            
 
+
+            }
 
         }
 

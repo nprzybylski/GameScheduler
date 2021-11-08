@@ -118,7 +118,7 @@ namespace GameScheduler.Controllers {
 
 
 
-        [HttpGet("{gameTitle}/gameid/")]
+        [HttpGet("gametitle/{gameTitle}")]
 
 
         public IActionResult GetAllGameEventsWithGameTitle(string gameTitle){

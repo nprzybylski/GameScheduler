@@ -28,9 +28,26 @@ function getEventGameTitle(t){
   var gametitle = t.target.value;
   //sessionStorage.setItem('date', e.target.value)
   alert(t.target.value);
-  getItemsByGameTitleAndDate()
+  getItemsByGameTitleAndDate();
 
 }
+
+
+
+//Function for clearing date field
+
+function clearInputFields(){
+
+  document.getElementById("event-date").valueAsDate = null;
+  document.getElementById("game-select").value = "all";
+
+}
+//Function for getting Events by Title and Date
+
+
+
+
+
 
 // Fetch events by date
 
@@ -39,12 +56,23 @@ function getItemsByDate(e) {
     //2021-09-27
   fetch(`${uri}/date/${e.target.value}`) 
     .then(response => response.json())
-    .then(data => _displayItemsByDate(data))
+    .then(data => _displayItemsByDateAndTitle(data))
     .catch(error => console.error('Unable to get items.', error));
 }
 
-function getItemsByGameTitleAndDate(t){
-  fetch(`${uri}/date/${t.target.value}`) 
+function getItemsByGameTitleAndDate(){
+  
+  var t = document.getElementById('game-select').value;
+  
+  var e = document.getElementById('event-date').value;
+  if (!e) {
+    e = "all";
+  }
+
+
+  alert("Date " + e);
+  alert("Title " + t);
+  fetch(`${uri}/date/${e}/${t}`) 
     .then(response => response.json())
     .then(data => _displayItemsByDateAndTitle(data))
     .catch(error => console.error('Unable to get items.', error));
@@ -189,7 +217,7 @@ function _displayItems(data) {
 
 // Display items by date
 
-function _displayItemsByDate(data){
+function _displayItemsByDateAndTitle(data){
   
   const tBody = document.getElementById('eventByDateTable');
   tBody.innerHTML = '';
