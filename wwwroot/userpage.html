@@ -1,0 +1,27 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>User Page</title>
+        <link rel="stylesheet" href="css/site.css" />
+    </head>
+    <body>
+        <h1 id = "title">Welcome <span id="name"></span></h1>
+        <button type="submit" >Games</button>
+        <button type="submit" >Events</button>
+        <button type="submit" onclick="logOut()">Logout</button>
+    </body>
+</html>
+
+<script>
+    let usernamePassed = sessionStorage.getItem("username");
+    console.log(usernamePassed)
+    document.getElementById("name").innerHTML = usernamePassed;
+
+    function logOut(){
+        sessionStorage.clear()
+        window.location.replace("https://localhost:5001/login.html");
+    }
+</script>

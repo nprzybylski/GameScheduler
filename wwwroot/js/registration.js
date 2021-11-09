@@ -27,8 +27,9 @@ function addUser() {
       })
         .then(response => response.json())
         .catch(error => console.error('Unable to add user.', error));
+        window.location.replace("https://localhost:5001/login.html");
     }else{
-      alert("INCORRECT BTICH")
+      alert("Passwords do not match")
     }
   }
 function confirmPassword(pass, confirmPass){
