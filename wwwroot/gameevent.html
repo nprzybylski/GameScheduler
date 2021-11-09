@@ -54,25 +54,29 @@
 
 <!--<p id="counter"></p> For some Odd Reason you need this counter for a table to work-->
 
-<p> Choose a Date: </p>
+<main>
+    
+    <div>
+        <span >
+             <label for="event-date" >Choose a Date: </label>
+             <input type="date" id="event-date" name="event-date" onchange="getItemsByGameTitleAndDate()">
+        </span>
+        
+        <span>
+             <label for="gameselect" >Choose a Game: </label>
+             <select name="game-select" id="game-select" onchange="getItemsByGameTitleAndDate()">
+             <option value="all">All</option>   
+             <option value="Battlefield V">Battlefield V</option>
+             <option value="Minecraft">Minecraft</option>
+             <option value="Space Engineers">Space Engineers</option>
+             </select>
+        </span>
+    </div>
 
-    <input type="date" id="event-date" name="event-date"  onchange="getItemsByGameTitleAndDate()">
     <br>
-    <input type="button" value="Show All" name="all-events" onclick="clearInputFields();getItems();">
-
-    <label for="gameselect" style="float:right;">Choose a Game</label>
-
-    <select name="game-select" id="game-select" style="float:right;" onchange="getItemsByGameTitleAndDate()">
-     <option value="all">All</option>   
-     <option value="Battlefield V">Battlefield V</option>
-     <option value="Minecraft">Minecraft</option>
-     <option value="Space Engineers">Space Engineers</option>
-     
-    </select>
-
+    <input type="button" value="Show All" name="all-events" style="align-self: center;" onclick="clearInputFields();getItems();">
     <br>
-    <br>
-<div>
+ <div>
     <h1> Game Events: </h1>
     <br>
     <table>
@@ -96,6 +100,6 @@
         getItemsByDate();
     </script>
  </div>
-
+</main>
 </body>
 </html>
