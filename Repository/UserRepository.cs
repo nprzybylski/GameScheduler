@@ -42,6 +42,7 @@ namespace GameScheduler.Repository {
             return newList;
         }
         public User InsertUser(User u) {
+            //left off with statement below
             var statement = "INSERT into user (name,password,bio) values (@newName,@newPassword,@newBio)";
 
             var command = new MySqlCommand(statement,_connection);
