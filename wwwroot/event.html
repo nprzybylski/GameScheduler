@@ -8,9 +8,14 @@
         <h1>Event Admin Menu</h1>
         <h3>Add</h3>
         <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-            <input type="text" id="add-title" placeholder="New game">
+            <input type="text" id="add-title" placeholder="New title">
+            <input type="text" id="add-gametitle" placeholder="New game">
             <input type="text" id="add-description" placeholder="New description">
-            <input type="text" id="add-genre" placeholder="New genre">
+            <input type="text" id="add-users" placeholder="New users">
+            <input type="text" id="add-capacity" placeholder="New capacity">
+            <input type="text" id="add-time" placeholder="New time">
+            <input type="text" id="add-id" placeholder="New id">
+            
             <input type="submit" value="Add">
         </form>
     
@@ -18,8 +23,12 @@
             <h3>Edit</h3>
             <form action="javascript:void(0);" onsubmit="updateItem()">
                 <input type="text" id="edit-title">
+                <input type="text" id="edit-gametitle">
                 <input type="text" id="edit-description">
-                <input type="text" id="edit-genre">
+                <input type="text" id="edit-users">
+                <input type="text" id="edit-capacity">
+                <input type="text" id="edit-time">
+                <input type="text" id="edit-id">
                 <input type="submit" value="Save">
                 <a onclick="closeInput()" aria-label="Close">&#10006;</a>
             </form>
@@ -29,18 +38,22 @@
     
         <table>
             <tr>
-                <th>Title</th>
+                <th>Event Title</th>
+                <th>Game Title</th>
                 <th>Description</th>
-                <th>Genre</th>
+                <th>Users</th>
+                <th>Capacity</th>
+                <th>Time</th>
+                <th>Id</th>
                 <th></th>
                 <th></th>
             </tr>
-            <tbody id="games"></tbody>
+            <tbody id="events"></tbody>
         </table>
         <div>
             <input type="button"  onClick="parent.location='admin.html'" value="Back" id="back">
         </div>
-        <script src="js/site.js" asp-append-version="true"></script>
+        <script src="js/event.js" asp-append-version="true"></script>
         <script type="text/javascript">
             getItems();
         </script>

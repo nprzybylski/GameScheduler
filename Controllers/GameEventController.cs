@@ -97,9 +97,16 @@ namespace GameScheduler.Controllers {
 
         public IActionResult UpdateGameEvent(int id, GameEvent g){
 
-            _gameEventServices.UpdateGameEvent(id, g);
+            try {
+                _gameEventServices.UpdateGameEvent(id, g);
+                if(id!=null || g!=null) return NoContent();
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error");
+            }
 
-            return NoContent();
+            // return NoContent();
 
         }
 
