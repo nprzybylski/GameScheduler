@@ -9,6 +9,7 @@ namespace GameScheduler.Repository {
         List<User> Users {get; set;}
         public IEnumerable<User> GetAllUsers();
         public User InsertUser(User u);
+        public void UpdateUser(string name, User userIn);
         public void DeleteUser(string name);
         public bool loginUser(string name, string password);
     }
@@ -54,6 +55,16 @@ namespace GameScheduler.Repository {
                 return u;
             else
                 return null;
+        }
+        public void UpdateUser(string name, User userIn) {
+            var statement = "Update user Set Name=@newName, Password=@newPassword, Bio=@newBio Where Name = @updateName";
+            var command = new MySqlCommand(statement,_connection);
+            command.Parameters.AddWithValue("@newName", userIn.name);
+            command.Parameters.AddWithValue("@newPassword", userIn.password);
+            command.Parameters.AddWithValue("@newBio", userIn.bio);
+            command.Parameters.AddWithValue("@updateName", name);
+
+            int result = command.ExecuteNonQuery();
         }
         public void DeleteUser(string name) {
                 
