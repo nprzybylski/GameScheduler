@@ -3,51 +3,37 @@ let user = [];
 
 //LOGIN
 function loginUser() {
-  const addNameTextbox = document.getElementById('username');
-  const addPasswordTextbox = document.getElementById('password');
+  const NameTextbox = document.getElementById('username').value;
+  const PasswordTextbox = document.getElementById('password').value;
 
-  const user = {
-    name: addNameTextbox.value.trim(),
-    password: addPasswordTextbox.value.trim()
+  const login = {
+    name: NameTextbox.trim(),
+    password: PasswordTextbox.trim()
   };
-  console.log(user.name);
-  console.log(user.password);
-  fetch(uri, {
+  console.log(login.name);
+  console.log(login.password);
+  fetch(`${uri}/${NameTextbox}/${PasswordTextbox}`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(login)
   })
-    .then(response => response.json())
-
-    .catch(error => console.error('Unable to login user.', error));
+    .then(
+        function(response) {
+          if(response.status ==200){
+            alert("You have logged in");
+            sessionStorage.setItem("username",login.name);
+            window.location.replace("https://localhost:5001/userpage.html");
+          }else{
+            alert("Incorrect Username or Password");
+          }
+          return;
+        });
 }
 
-//Register new user
-function addUser() {
-  const addNameTextbox = document.getElementById('add-username');
-  const addPasswordTextbox = document.getElementById('add-password');
-  const addBioTextBox = document.getElementById('add-bio');
+function _displayItems() {
+  const tBody = document.getElementById('games');
 
-  const user = {
-    name: addNameTextbox.value.trim(),
-    password: addPasswordTextbox.value.trim(),
-    bio: addBioTextBox.value.trim()
-  };
-  console.log(user.name);
-  console.log(user.password);
-  console.log(user.bio);
-  fetch(uri, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  })
-    .then(response => response.json())
-
-    .catch(error => console.error('Unable to add user.', error));
 }

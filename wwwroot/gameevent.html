@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Game Events</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body onload="javascript:getItems()">
+
+
+
+  <!-- 
+    <h1>Game Events</h1>
+    <h3>Add</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="add-name" placeholder="New to-do">
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="checkbox" id="edit-isComplete">
+            <input type="text" id="edit-name">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Users</th>
+            <th>GameTitle</th>
+            <th>Capacity</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+        <tbody id="eventTable"></tbody>
+    </table>
+  <script src="js/gameevent.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+    //  getItems();
+    </script>
+-->
+
+
+<!--<p id="counter"></p> For some Odd Reason you need this counter for a table to work-->
+
+<main>
+    
+    <div>
+        <span >
+             <label for="event-date" >Choose a Date: </label>
+             <input type="date" id="event-date" name="event-date" onchange="getItemsByGameTitleAndDate()">
+        </span>
+        
+        <span>
+             <label for="gameselect" >Choose a Game: </label>
+             <select name="game-select" id="game-select" onchange="getItemsByGameTitleAndDate()">
+             <option value="all">All</option>   
+             <option value="Battlefield V">Battlefield V</option>
+             <option value="Minecraft">Minecraft</option>
+             <option value="Space Engineers">Space Engineers</option>
+             </select>
+        </span>
+    </div>
+
+    <br>
+    <input type="button" value="Show All" name="all-events" style="align-self: center;" onclick="clearInputFields();getItems();">
+    <br>
+ <div>
+    <h1> Game Events: </h1>
+    <br>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Users</th>
+            <th>GameTitle</th>
+            <th>Capacity</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+        <tbody id="eventByDateTable"></tbody>
+    </table>
+
+    <script src="js/gameevent.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItemsByDate();
+    </script>
+ </div>
+</main>
+</body>
+</html>

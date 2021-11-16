@@ -17,7 +17,6 @@ namespace GameScheduler.Repository {
         public List<Game> Games {get;set;}
         private MySqlConnection _connection;
         public GameRepository() {
-            //string connectionString="server=localhost;userid=csci490user;password=csci490pass;database=GameScheduler";
             string connectionString="server=game-scheduler.cm5lnq4oiwiw.us-east-2.rds.amazonaws.com;userid=admin;password=C$C149o#ndkuko1;database=GameScheduler";
             _connection = new MySqlConnection(connectionString);
             _connection.Open();
