@@ -14,9 +14,9 @@ function addItem() {
   const addBioTextBox = document.getElementById('add-bio');
 
   const item = {
-    name: addNameTextbox.value.trim,
-    password: addPasswordTextbox.value,
-    bio: addBioTextBox.value
+    name: addNameTextbox.value.trim(),
+    password: addPasswordTextbox.value.trim(),
+    bio: addBioTextBox.value.trim()
   };
 
   fetch(uri, {

@@ -69,7 +69,7 @@ namespace GameScheduler.Repository {
         }
         public void DeleteUser(string name) {
                 
-            var statement = "DELETE FROM Users Where name=@N";
+            var statement = "DELETE FROM user Where Name=@N";
             var command = new MySqlCommand(statement,_connection);
             command.Parameters.AddWithValue("@N", name);
 
