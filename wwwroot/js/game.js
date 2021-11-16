@@ -55,13 +55,14 @@ function displayEditForm(title) {
 }
 
 function updateItem() {
+  const itemTitle = document.getElementById('edit-title').value;  
   const item = {
-    title: document.getElementById('edit-title').value.trim(),
-    description: document.getElementById('edit-description').value.trim(),
-    genre: document.getElementById('edit-genre').value.trim()
+    title: document.getElementById('edit-title').value,
+    description: document.getElementById('edit-description').value,
+    genre: document.getElementById('edit-genre').value
   };
   
-  fetch(`${uri}/${item.title}`, {
+  fetch(`${uri}/${itemTitle}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
@@ -99,11 +100,13 @@ function _displayItems(data) {
       
     let editButton = button.cloneNode(false);
     editButton.innerText = 'Edit';
-    editButton.setAttribute('onclick', `displayEditForm(${item.title})`);
+    //editButton.setAttribute('onclick', `displayEditForm(${item.title})`);
+    editButton.onclick = function() { displayEditForm(item.title) };
 
     let deleteButton = button.cloneNode(false);
     deleteButton.innerText = 'Delete';
-    deleteButton.setAttribute('onclick', `deleteItem(${item.title})`);
+    // deleteButton.setAttribute('onclick', `deleteItem(${item.title})`);
+    deleteButton.onclick = function() { deleteItem(item.title) };
 
     let tr = tBody.insertRow();
 

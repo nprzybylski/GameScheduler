@@ -13,6 +13,19 @@ namespace GameScheduler.Controllers {
         {
             _userServices = userServices;
         }
+
+        [HttpGet(Name="GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            try {
+                IEnumerable<User> list = _userServices.getUsers();
+                if(list!=null) return Ok(list);
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error");
+            }
+        }
      
         [HttpPost("{name}/{password}")]
         public IActionResult loginUser(string name, string password) {
@@ -34,8 +47,20 @@ namespace GameScheduler.Controllers {
             try {
                 User returnedUser = _userServices.insertUser(u);
                 if(u!=null){
-                    //return CreatedAtRoute("GetAllUsers", new {name=returnedUser.name}, returnedUser); 
-                    return Redirect("https://localhost:5001/login.html"); }
+                    return CreatedAtRoute("GetAllUsers", new {name=returnedUser.name}, returnedUser); }
+                    // return Redirect("https://localhost:5001/login.html"); }
+                else return BadRequest();
+            }
+            catch (Exception ex) {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPut("{name}")]
+        public IActionResult UpdateUser(string name, User userIn) {
+            try {
+                _userServices.updateUser(name, userIn);
+                if(name!=null || userIn!=null) return NoContent();
                 else return BadRequest();
             }
             catch (Exception ex) {
@@ -43,7 +68,7 @@ namespace GameScheduler.Controllers {
             }
         }
         
-        [HttpDelete("{title}")]
+        [HttpDelete("{name}")]
         public IActionResult DeleteUser(string name) {
             try {
                 _userServices.deleteUser(name);

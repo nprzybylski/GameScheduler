@@ -1,3 +1,23 @@
+body, html{
+
+    margin:0;
+    padding:0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 3% 0 3%;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+div{
+    flex-direction: row;
+ 
+}
+
 input[type='submit'], button, [aria-label] {
     cursor: pointer;
 }

@@ -1,5 +1,5 @@
-const uri = 'Game';
-let games = [];
+const uri = 'registration/api/user';
+let users = [];
 
 function getItems() {
   fetch(uri)
@@ -9,14 +9,14 @@ function getItems() {
 }
 
 function addItem() {
-  const addTitleTextbox = document.getElementById('add-title');
-  const addDescriptionTextbox = document.getElementById('add-description');
-  const addGenreTextBox = document.getElementById('add-genre');
+  const addNameTextbox = document.getElementById('add-name');
+  const addPasswordTextbox = document.getElementById('add-password');
+  const addBioTextBox = document.getElementById('add-bio');
 
   const item = {
-    title: addTitleTextbox.value.trim(),
-    description: addDescriptionTextbox.value.trim(),
-    genre: addGenreTextBox.value.trim()
+    name: addNameTextbox.value.trim(),
+    password: addPasswordTextbox.value.trim(),
+    bio: addBioTextBox.value.trim()
   };
 
   fetch(uri, {
@@ -30,38 +30,39 @@ function addItem() {
     .then(response => response.json())
     .then(() => {
       getItems();
-      addTitleTextbox.value = '';
-      addDescriptionTextbox.value = '';
-      addGenreTextBox.value = '';
+      addNameTextbox.value = '';
+      addPasswordTextbox.value = '';
+      addBioTextBox.value = '';
     })
     .catch(error => console.error('Unable to add item.', error));
 }
 
-function deleteItem(title) {
-  fetch(`${uri}/${title}`, {
+function deleteItem(name) {
+  fetch(`${uri}/${name}`, {
     method: 'DELETE'
   })
   .then(() => getItems())
   .catch(error => console.error('Unable to delete item.', error));
 }
 
-function displayEditForm(title) {
-  const item = games.find(item => item.title === title);
+function displayEditForm(name) {
+  const item = users.find(item => item.name === name);
   
-  document.getElementById('edit-title').value = item.title;
-  document.getElementById('edit-description').value = item.description;
-  document.getElementById('edit-genre').value = item.genre;
+  document.getElementById('edit-name').value = item.name;
+  document.getElementById('edit-password').value = item.password;
+  document.getElementById('edit-bio').value = item.bio;
   document.getElementById('editForm').style.display = 'block';
 }
 
 function updateItem() {
+  const itemName = document.getElementById('edit-name').value;  
   const item = {
-    title: document.getElementById('edit-title').value.trim(),
-    description: document.getElementById('edit-description').value.trim(),
-    genre: document.getElementById('edit-genre').value.trim()
+    name: document.getElementById('edit-name').value,
+    password: document.getElementById('edit-password').value,
+    bio: document.getElementById('edit-bio').value
   };
   
-  fetch(`${uri}/${item.title}`, {
+  fetch(`${uri}/${itemName}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
@@ -82,13 +83,13 @@ function closeInput() {
 }
 
 function _displayCount(itemCount) {
-  const name = (itemCount === 1) ? 'game' : 'games';
+  const name = (itemCount === 1) ? 'user' : 'users';
 
   document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
 function _displayItems(data) {
-  const tBody = document.getElementById('games');
+  const tBody = document.getElementById('users');
   tBody.innerHTML = '';
 
   _displayCount(data.length);
@@ -99,24 +100,26 @@ function _displayItems(data) {
       
     let editButton = button.cloneNode(false);
     editButton.innerText = 'Edit';
-    editButton.setAttribute('onclick', `displayEditForm(${item.title})`);
+    //editButton.setAttribute('onclick', `displayEditForm(${item.name})`);
+    editButton.onclick = function() { displayEditForm(item.name) };
 
     let deleteButton = button.cloneNode(false);
     deleteButton.innerText = 'Delete';
-    deleteButton.setAttribute('onclick', `deleteItem(${item.title})`);
+    // deleteButton.setAttribute('onclick', `deleteItem(${item.name})`);
+    deleteButton.onclick = function() { deleteItem(item.name) };
 
     let tr = tBody.insertRow();
 
     let td1 = tr.insertCell(0);
-    let textNode = document.createTextNode(item.title);
+    let textNode = document.createTextNode(item.name);
     td1.appendChild(textNode);
 
     let td2 = tr.insertCell(1);
-    let textNode1 = document.createTextNode(item.description);
+    let textNode1 = document.createTextNode(item.password);
     td2.appendChild(textNode1);
 
     let td3 = tr.insertCell(2);
-    let textNode2 = document.createTextNode(item.genre);
+    let textNode2 = document.createTextNode(item.bio);
     td3.appendChild(textNode2);
 
     let td4 = tr.insertCell(3);
@@ -126,5 +129,5 @@ function _displayItems(data) {
     td5.appendChild(deleteButton);
   });
 
-  games = data;
+  users = data;
 }
