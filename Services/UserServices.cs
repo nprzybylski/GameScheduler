@@ -8,6 +8,7 @@ namespace GameScheduler.Services {
     public interface IUserServices {
         public List<User> getUsers();
         public User insertUser(User g);
+        public void updateUser(string name, User userIn); 
         public void deleteUser(string title);
         public bool loginUser(string name, string password);
 
@@ -24,6 +25,9 @@ namespace GameScheduler.Services {
          public User insertUser(User newUser) {
             return _repo.InsertUser(newUser);
         }
+        public void updateUser(string name, User userIn) {
+            _repo.UpdateUser(name, userIn);
+         }
          public void deleteUser(string title) {
              _repo.DeleteUser(title);
          }

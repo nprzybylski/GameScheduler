@@ -69,7 +69,7 @@ namespace GameScheduler.Repository {
         }
         public void DeleteUser(string name) {
                 
-            var statement = "DELETE FROM Users Where name=@N";
+            var statement = "DELETE FROM user Where Name=@N";
             var command = new MySqlCommand(statement,_connection);
             command.Parameters.AddWithValue("@N", name);
 
@@ -89,6 +89,7 @@ namespace GameScheduler.Repository {
             while(result.Read()) {  
                 Console.WriteLine((string)result[0]);
                 Console.WriteLine((string)result[1]);
+                // Console.WriteLine((int)result[4]);
                 if((string.Equals(name, (string)result[0])) && (string.Equals(password, (string)result[1]))){
                     passMatch = true;
                     break;

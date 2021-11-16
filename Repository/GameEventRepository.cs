@@ -157,7 +157,7 @@ namespace GameScheduler.Repository {
 
         public void UpdateGameEvent(int id, GameEvent newGameEvent){
 
-            var statement = "UPDATE GameEvent SET Title=@newTitle, Users=@newUsers, GameTitle=@newGameTitle, Capacity=@newCapacity, Time=@newTime, Description=@newDescription WHERE Id=@newId";
+            var statement = "UPDATE GameEvents SET Title=@newTitle, Users=@newUsers, GameTitle=@newGameTitle, Capacity=@newCapacity, Time=@newTime, Description=@newDescription WHERE Id=@newId";
 
             var command = new MySqlCommand(statement, _connection);
             command.Parameters.AddWithValue("@newId", id);
